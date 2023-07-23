@@ -1,8 +1,8 @@
 import Note from "./notes.validator";
-import note from "./INote";
+import INote from "./INote";
 
 class notesService {
-  async create(note: note) {
+  async create(note: INote) {
     return await Note.create(note);
   }
 
@@ -14,7 +14,7 @@ class notesService {
     return await Note.find();
   }
 
-  async update(note: note) {
+  async update(note: INote) {
     return await Note.findByIdAndUpdate(note._id, note, {
       new: true,
     });

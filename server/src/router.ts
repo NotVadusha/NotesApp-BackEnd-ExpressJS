@@ -12,14 +12,18 @@ router.get("/notes/:id", (req: Request, res: Response) => {
   }
   notesController.getOne(req, res);
 }); // Get one note
+
 router.get("/notes", notesController.getAll); // Get all notes
+
 router.post("/notes", notesController.create); // Set new note
+
 router.put("/notes", (req: Request, res: Response) => {
   if (!req.body._id) {
     throw new Error("There is no ID");
   }
   notesController.update(req, res);
 }); // Update note
+
 router.delete("/notes/:id", (req: Request, res: Response) => {
   if (!req.params.id) {
     throw new Error("There is no ID");
