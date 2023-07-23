@@ -19,6 +19,9 @@ class notesController {
   }
 
   async getOne(req: Request, res: Response) {
+    if (!req.params.id) {
+      res.status(404).json("Not found with this ID");
+    }
     const note = await notesService.getOne(req.params.id);
     return res.json(note);
   }
@@ -29,12 +32,18 @@ class notesController {
   }
 
   async update(req: Request, res: Response) {
+    if (!req.body._id) {
+      res.status(404).json("Not found with this ID");
+    }
     req.body.is_updated = new Date();
     const updatedTodo = await notesService.update(req.body);
     return res.json(updatedTodo);
   }
 
   async delete(req: Request, res: Response) {
+    if (!req.params.id) {
+      res.status(404).json("Not found with this ID");
+    }
     const note = await notesService.delete(req.params.id);
     return res.json(note);
   }
