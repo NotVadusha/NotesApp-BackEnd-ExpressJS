@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-async function connectDB(DB_URL: any) {
+async function connectDB(DB_URL: string) {
   try {
     await mongoose.connect(DB_URL);
     console.log("Success connection");
