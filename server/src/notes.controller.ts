@@ -11,17 +11,14 @@ class notesController {
       content,
       is_archived,
       is_completed,
-      created: new Date(),
-      is_updated: new Date(),
+      created_at: new Date(),
+      updated_at: new Date(),
       category,
     });
     res.json(note);
   }
 
   async getOne(req: Request, res: Response) {
-    if (!req.params.id) {
-      res.status(404).json("There is no id in request");
-    }
     const note = await notesService.getOne(req.params.id);
     return res.json(note);
   }
@@ -32,19 +29,12 @@ class notesController {
   }
 
   async update(req: Request, res: Response) {
-    if (!req.body._id) {
-      res.status(404).json('There is no "_id" in given note');
-    }
-    const updatedNote = req.body.is_updated;
-    updatedNote.is_updated = new Date();
-    const responseNote = await notesService.update(updatedNote);
+    const updatedNote = { ...req.body, is_updated: new Date() };
+    const responseNote = await notesService.update(updatedNote, req.params.id);
     return res.json(responseNote);
   }
 
   async delete(req: Request, res: Response) {
-    if (!req.params.id) {
-      res.status(404).json("There is no id in request");
-    }
     const note = await notesService.delete(req.params.id);
     return res.json(note);
   }

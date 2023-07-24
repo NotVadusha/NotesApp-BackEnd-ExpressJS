@@ -5,8 +5,8 @@ const noteRequest = new mongoose.Schema({
   content: { type: String },
   is_archived: { type: Boolean, required: true },
   is_completed: { type: Boolean, required: true },
-  created: { type: Date, required: true },
-  is_updated: { type: Date, required: true },
+  created_at: { type: Date, required: true },
+  updated_at: { type: Date, required: true },
   category: { type: String, required: true },
 });
 

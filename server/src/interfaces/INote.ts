@@ -1,11 +1,11 @@
 interface INote {
-  _id: String;
+  _id?: String;
   title: String;
   content?: String;
   is_archived: Boolean;
   is_completed: Boolean;
-  created: Date;
-  is_updated: Date;
+  created_at: Date;
+  updated_at: Date;
   category: String;
 }
 
