@@ -2,6 +2,7 @@ import { Router } from "express";
 import notesController from "./notes.controller";
 import { validateIDMidlleware } from "./middlewares/validateID.middleware";
 import { isExistMiddleware } from "./middlewares/isExist.middleware";
+import { validateNoteOnSaveMiddleware } from "./middlewares/validateNoteOnSave.middleware";
 
 const router = Router();
 
@@ -12,7 +13,7 @@ router.get(
   notesController.getOne
 ); // Get one note
 router.get("/notes", notesController.getAll); // Get all notes
-router.post("/notes", notesController.create); // Set new note
+router.post("/notes", validateNoteOnSaveMiddleware, notesController.create); // Set new note
 router.put(
   "/notes/:id",
   validateIDMidlleware,
