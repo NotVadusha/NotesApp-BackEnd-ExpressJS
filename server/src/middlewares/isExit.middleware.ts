@@ -1,6 +1,5 @@
 import { Response, NextFunction } from "express";
 import notesService from "../notes.service";
-import mongoose from "mongoose";
 import { HttpError } from "../utils/notes.errors";
 import { TypedRequestParams } from "../interfaces/IRequest";
 import { StatusCodes } from "http-status-codes";

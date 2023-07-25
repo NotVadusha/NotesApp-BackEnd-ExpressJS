@@ -4,7 +4,7 @@ import { HttpError } from "../utils/notes.errors";
 import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 
-const idMiddleware = async (
+const validIdMiddleware = async (
   req: TypedRequestParams<{ id: string }>,
   res: Response,
   next: NextFunction
@@ -22,4 +22,4 @@ const idMiddleware = async (
   }
 };
 
-export { idMiddleware };
+export { validIdMiddleware };

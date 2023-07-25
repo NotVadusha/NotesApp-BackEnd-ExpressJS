@@ -14,7 +14,7 @@ class notesService {
     return await Note.find();
   }
 
-  async update(note: INote, id: string) {
+  async update(note: any, id: string) {
     return await Note.findByIdAndUpdate(id, note, {
       new: true,
     });

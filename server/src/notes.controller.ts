@@ -3,10 +3,8 @@ import { Request, Response } from "express";
 
 class notesController {
   async create(req: Request, res: Response) {
-    const { _id, title, content, is_archived, is_completed, category } =
-      req.body;
+    const { title, content, is_archived, is_completed, category } = req.body;
     const note = await notesService.create({
-      _id,
       title,
       content,
       is_archived,
@@ -29,7 +27,16 @@ class notesController {
   }
 
   async update(req: Request, res: Response) {
-    const updatedNote = { ...req.body, is_updated: new Date() };
+    const { title, content, is_archived, is_completed, created_at, category } =
+      req.body;
+    const updatedNote = {
+      title,
+      content,
+      is_archived,
+      is_completed,
+      updated_at: new Date(),
+      category,
+    };
     const responseNote = await notesService.update(updatedNote, req.params.id);
     return res.json(responseNote);
   }
