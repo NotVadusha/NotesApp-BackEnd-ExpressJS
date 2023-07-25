@@ -4,7 +4,7 @@ import { HttpError } from "../utils/notes.errors";
 import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 
-const idCheckMiddleware = (
+const idMiddleware = (
   req: TypedRequestParams<{ id: string }>,
   res: Response,
   next: NextFunction
@@ -18,4 +18,4 @@ const idCheckMiddleware = (
   next();
 };
 
-export { idCheckMiddleware };
+export { idMiddleware };
