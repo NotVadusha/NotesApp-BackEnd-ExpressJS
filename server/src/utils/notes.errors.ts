@@ -18,14 +18,13 @@ export class HttpError extends Error {
 }
 
 class ErrorHandler {
-  public handleError(error: Error | HttpError, res: Response): void {
+  public handleError(error: Error | HttpError, res: Response) {
     if (error instanceof HttpError) {
-      console.log(1);
-      res
+      return res
         .status(error.httpCode)
         .json({ name: error.name, message: error.message });
     }
-    res
+    return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ name: error.name, message: error.message });
   }
