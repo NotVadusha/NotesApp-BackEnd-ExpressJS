@@ -10,4 +10,4 @@ const noteRequest = new mongoose.Schema({
   category: { type: String, required: true },
 });
 
-export default mongoose.model("Post", noteRequest);
+export default mongoose.model("Note", noteRequest);

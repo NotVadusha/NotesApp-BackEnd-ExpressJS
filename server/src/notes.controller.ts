@@ -37,8 +37,11 @@ class notesController {
       updated_at: new Date(),
       category,
     };
-    const responseNote = await notesService.update(updatedNote, req.params.id);
-    return res.json(responseNote);
+    const toResponseNote = await notesService.update(
+      updatedNote,
+      req.params.id
+    );
+    return res.json(toResponseNote);
   }
 
   async delete(req: Request, res: Response) {

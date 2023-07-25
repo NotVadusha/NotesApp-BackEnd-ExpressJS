@@ -1,5 +1,4 @@
 interface INote {
-  _id?: String;
   title: String;
   content?: String;
   is_archived: Boolean;
